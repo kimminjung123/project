@@ -1,17 +1,14 @@
-import org.w3c.dom.events.MutationEvent;
-
-import java.awt.*;
+package org.example;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List
+        List<Menu> menuList = new ArrayList<>(); //장바구니
 
-                menuList = new ArrayList<>(); //장바구니
         List<Integer> stampCoupons = new ArrayList<>();
         boolean orderCompleted = false;
 // List phoneNumberList = new ArrayList<>(); //회원 번호 리스트
@@ -117,8 +114,9 @@ public class Main {
                         System.out.print("얼음량: ");
                         int ice = sc.nextInt();
 
+                        int syrup = 0;
                         System.out.println(menuName + "을(를) 장바구니에 담았습니다.");
-                        Menu menu = new Menu(menuId, menuName, menuPrice, ice);
+                        Menu menu = new Menu(menuId, menuName, menuPrice, ice, syrup);
                         menuList.add(menu);
                         menuId++;
                         total += menuPrice;
@@ -130,6 +128,7 @@ public class Main {
                         System.out.print("입력: ");
                         int menuNum = sc.nextInt();
 
+
                         if (menuNum == 1) {
                             menuName = "마카롱";
                             menuPrice = 3000;
@@ -140,13 +139,20 @@ public class Main {
                             menuName = "쿠키";
                             menuPrice = 1000;
                         }
+                        int ice = 0;
+                        int syrup = 0;
+                        System.out.println(menuName + "을(를) 장바구니에 담았습니다.");
+                        Menu menu = new Menu(menuId, menuName, menuPrice, ice, syrup);
+                        menuList.add(menu);
+                        menuId++;
+                        total += menuPrice;
                     }
                     break;
                 }
             } else if (num == 2) {
                 System.out.println("옵션 변경 할 메뉴 번호를 입력해 주세요!");
                 for (Menu menu : menuList) {
-                    System.out.printf("%d,%s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                    System.out.printf("%d,%s(얼음:%d / 시럽:%d) = %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
                 }
                 System.out.print("변경할 메뉴: ");
                 int modifyId = sc.nextInt();
@@ -164,20 +170,26 @@ public class Main {
                 System.out.println(modifyId + "번 메뉴 옵션이 변경 되었습니다.");
 
             } else if (num == 3) {
+                System.out.println("== 장바구니 ==");
                 if (menuList.isEmpty()) {
                     System.out.println("장바구니가 비어 있습니다.");
                 } else {
                     for (Menu menu : menuList) {
-                        System.out.printf("%d,%s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                        if (menu.getIce() == 0 && menu.getSyrup() == 0) {
+                            System.out.printf("%d,%s(얼음:0 / 시럽 : 0) = %d \n", menu.getMenuId(), menu.getMenuName(), menu.getMenuPrice());
+                        } else {
+                            System.out.printf("%d,%s(얼음:%d / 시럽 : %d) = %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                        }
                     }
                 }
             } else if (num == 4) {
+                System.out.println("== 장바구니 ==");
                 if (menuList.isEmpty()) {
                     System.out.println("장바구니가 비어 있습니다.");
                     break;
                 } else {
                     for (Menu menu : menuList) {
-                        System.out.printf("%d. %s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                        System.out.printf("%d,%s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
                     }
                     System.out.print("취소할 메뉴 번호: ");
                     int id = sc.nextInt();
@@ -189,6 +201,7 @@ public class Main {
                             break;
                         }
                     }
+                    System.out.println(id + "번 메뉴가 취소되었습니다.");
                 }
 
             } else if (num == 5) {
