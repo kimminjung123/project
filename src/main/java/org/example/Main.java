@@ -111,10 +111,19 @@ public class Main {
                         System.out.println("3. 50%");
                         System.out.println("4. 넣지않음");
 
+
                         System.out.print("얼음량: ");
                         int ice = sc.nextInt();
 
-                        int syrup = 0;
+                        System.out.println("시럽횟수를 선택해 주세요");
+                        System.out.println("1. 1번");
+                        System.out.println("2. 2번");
+                        System.out.println("3. 3번");
+                        System.out.println("4. 넣지않음");
+
+                        System.out.print("시럽횟수: ");
+                        int syrup = sc.nextInt();
+
                         System.out.println(menuName + "을(를) 장바구니에 담았습니다.");
                         Menu menu = new Menu(menuId, menuName, menuPrice, ice, syrup);
                         menuList.add(menu);
