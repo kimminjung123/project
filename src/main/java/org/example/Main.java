@@ -1,5 +1,3 @@
-package org.example;
-
 import org.w3c.dom.events.MutationEvent;
 
 import java.awt.*;
@@ -9,13 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Menu> menuList = new ArrayList<>(); //장바구니
+        List
 
-
+                menuList = new ArrayList<>(); //장바구니
         List<Integer> stampCoupons = new ArrayList<>();
+        boolean orderCompleted = false;
 // List phoneNumberList = new ArrayList<>(); //회원 번호 리스트
 
 // PhoneNumber p010 = new PhoneNumber(0); //이미 등록된 번호
@@ -34,6 +32,7 @@ public class Main {
             System.out.println("4. 취소하기");
             System.out.println("5. 결제하기");
             System.out.println("6. 쿠폰 적립하기");
+            System.out.println("7. 종료하기");
             System.out.print("입력: ");
             int num = sc.nextInt();
 
@@ -144,12 +143,10 @@ public class Main {
                     }
                     break;
                 }
-
-
             } else if (num == 2) {
                 System.out.println("옵션 변경 할 메뉴 번호를 입력해 주세요!");
                 for (Menu menu : menuList) {
-                    System.out.printf("%d. %s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                    System.out.printf("%d,%s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
                 }
                 System.out.print("변경할 메뉴: ");
                 int modifyId = sc.nextInt();
@@ -171,7 +168,7 @@ public class Main {
                     System.out.println("장바구니가 비어 있습니다.");
                 } else {
                     for (Menu menu : menuList) {
-                        System.out.printf("%d. %s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
+                        System.out.printf("%d,%s(%d,%d): %d \n", menu.getMenuId(), menu.getMenuName(), menu.getIce(), menu.getSyrup(), menu.getMenuPrice());
                     }
                 }
             } else if (num == 4) {
@@ -211,8 +208,9 @@ public class Main {
                 System.out.println("== 쿠폰 적립==");
                 int phoneNumber;
                 int totalStamps = 0;
-                while (true) {
-                    System.out.println("전화번호를 입력하세요:");
+
+                if (stampCoupons.isEmpty()) {
+                    System.out.printf("전화번호를 입력하세요:");
                     phoneNumber = sc.nextInt();
                     // 스탬프 쿠폰 발급
                     stampCoupons.add(phoneNumber);
@@ -224,10 +222,14 @@ public class Main {
                         stampCoupons.clear(); // 스탬프 초기화
                         totalStamps = 0;
                     }
-                    break;
+                } else {
+                    System.out.println("이미 스탬프 쿠폰을 받았습니다.");
+                    orderCompleted = true;
                 }
+            } else if (num == 7) {
+                System.out.println("== 주문 완료 ==");
+                System.exit(7);
             }
         }
     }
 }
-
