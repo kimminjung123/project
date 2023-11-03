@@ -1,7 +1,9 @@
 package org.example;
 
 import lombok.*;
+
 import java.util.Scanner;
+
 @Builder
 @NoArgsConstructor
 public class Container {
