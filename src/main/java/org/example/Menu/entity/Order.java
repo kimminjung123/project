@@ -1,4 +1,4 @@
-package org.example.order.entity;
+package org.example.Menu.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
