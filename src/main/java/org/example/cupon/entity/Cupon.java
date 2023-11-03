@@ -1,4 +1,4 @@
-package org.example;
+package org.example.cupon.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
