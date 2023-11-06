@@ -26,22 +26,23 @@ INSERT INTO Menu (MenuMain, menuName, menuPrice) VALUES ('디저트','쿠키', 1
 -- 메뉴 조회
 SELECT * FROM Menu;
 
-DECLARE @phoneNumber VARCHAR(255);
-SET @phoneNumber = '사용자의_전화번호';
+CREATE TABLE IF NOT EXISTS UserCoupons (
+    PhoneNumber VARCHAR(255) PRIMARY KEY,
+    CouponCount INT DEFAULT 0
+    );
 
+SET @phoneNumber = '01024051642';
 -- 사용자가 가지고 있는 쿠폰 개수 확인
 SELECT CouponCount INTO @couponCount FROM UserCoupons WHERE PhoneNumber = @phoneNumber;
 
 -- 쿠폰 적립
-IF @couponCount < 10 THEN
-    INSERT INTO UserCoupons (PhoneNumber, CouponCount)
-    VALUES (@phoneNumber, 1)
-    ON DUPLICATE KEY UPDATE CouponCount = CouponCount + 1;
+IF @couponCount IS NULL THEN
+    INSERT INTO UserCoupons (PhoneNumber, CouponCount) VALUES (@phoneNumber, 1);
 ELSE
-    INSERT INTO UserCoupons (PhoneNumber, CouponCount)
-    VALUES (@phoneNumber, 1)
-    ON DUPLICATE KEY UPDATE CouponCount = 1;
+UPDATE UserCoupons SET CouponCount = CouponCount + 1 WHERE PhoneNumber = @phoneNumber;
 END IF;
 
--- 적립 후 쿠폰 개수 반환
 SELECT CouponCount FROM UserCoupons WHERE PhoneNumber = @phoneNumber;
+
+SELECT PhoneNumber, CouponCount FROM UserCoupons;
+

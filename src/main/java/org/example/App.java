@@ -27,8 +27,8 @@ public class App {
             System.out.println("2. 메뉴옵션변경");
             System.out.println("3. 장바구니");
             System.out.println("4. 취소하기");
-            System.out.println("5. 결제하기");
-            System.out.println("6. 쿠폰 적립하기");
+            System.out.println("5. 쿠폰 적립하기");
+            System.out.println("6. 결제하기");
             System.out.println("7. 종료하기");
             System.out.print("입력: ");
             int num = Container.getSc().nextInt();
@@ -51,12 +51,14 @@ public class App {
                     break;
 
                 case 5:
+                    couponController.coupon();
+                    break;
+
+                case 6:
                     menuController.payment();
                     return;
 
-                case 6:
-                    couponController.coupon();
-                    break;
+
 
                 case 7:
                     systemController.exit();
