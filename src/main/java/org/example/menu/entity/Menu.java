@@ -1,4 +1,4 @@
-package org.example.Menu.entity;
+package org.example.menu.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-class Order {
+public class Menu {
     private int menuId;
     private String menuName;
     private int menuPrice;

@@ -2,7 +2,7 @@ package org.example;
 public class Main {
 
     public static void main(String[] args) {
-        Container.init();
+        Container.scan();
         new App().run();
         Container.close();
     }

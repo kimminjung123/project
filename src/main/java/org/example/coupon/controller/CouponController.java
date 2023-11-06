@@ -1,16 +1,23 @@
-package org.example.cupon.controller;
+package org.example.coupon.controller;
 
-public class CuponController {
-    CuponService cuponService = new CuponSErvice();
+import org.example.Container;
 
-    public  void write() {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CouponController {
+    List<Integer> stampCoupons = new ArrayList<>();
+
+    int phoneNumber;
+    int totalStamps = 0;
+    boolean orderCompleted = false;
+
+    public void coupon() {
         System.out.println("== 쿠폰 적립==");
-        int phoneNumber;
-        int totalStamps = 0;
 
         if (stampCoupons.isEmpty()) {
-            System.out.printf("전화번호를 입력하세요:");
-            phoneNumber = sc.nextInt();
+            System.out.print("전화번호를 입력하세요:");
+            phoneNumber = Container.getSc().nextInt();
             // 스탬프 쿠폰 발급
             stampCoupons.add(phoneNumber);
             totalStamps++;
@@ -20,9 +27,11 @@ public class CuponController {
                 System.out.println("10개의 스탬프를 모두 모았습니다. 무료 음료를 받을 수 있습니다!");
                 stampCoupons.clear(); // 스탬프 초기화
                 totalStamps = 0;
+            }else {
+                System.out.println("이미 스탬프 쿠폰을 받았습니다.");
+                orderCompleted = true;
             }
-        } else {
-            System.out.println("이미 스탬프 쿠폰을 받았습니다.");
-            orderCompleted = true;
+
         }
+    }
 }
