@@ -5,8 +5,8 @@ USE Coffee;
 
 -- 메뉴 테이블 생성
 CREATE TABLE IF NOT EXISTS Menu (
-                                    menuId INT AUTO_INCREMENT PRIMARY KEY,
-                                    MenuMain VARCHAR(300) NOT NULL,
+    menuId INT AUTO_INCREMENT PRIMARY KEY,
+    MenuMain VARCHAR(300) NOT NULL,
     menuName VARCHAR(255) NOT NULL,
     menuPrice INT NOT NULL
     );
@@ -24,25 +24,17 @@ INSERT INTO Menu (MenuMain, menuName, menuPrice) VALUES ('디저트','케이크'
 INSERT INTO Menu (MenuMain, menuName, menuPrice) VALUES ('디저트','쿠키', 1000);
 
 -- 메뉴 조회
-SELECT * FROM Menu;
+DROP table UserCoupons;
+SELECT * FROM UserCoupons;
 
-CREATE TABLE IF NOT EXISTS UserCoupons (
-    PhoneNumber VARCHAR(255) PRIMARY KEY,
-    CouponCount INT DEFAULT 0
+CREATE TABLE IF NOT EXISTS coupon (
+    id int UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    phoneNumber VARCHAR(255) NOT NULL UNIQUE,
+    couponCount INT NOT NULL DEFAULT 0
     );
 
-SET @phoneNumber = '01024051642';
--- 사용자가 가지고 있는 쿠폰 개수 확인
-SELECT CouponCount INTO @couponCount FROM UserCoupons WHERE PhoneNumber = @phoneNumber;
-
--- 쿠폰 적립
-IF @couponCount IS NULL THEN
-    INSERT INTO UserCoupons (PhoneNumber, CouponCount) VALUES (@phoneNumber, 1);
-ELSE
-UPDATE UserCoupons SET CouponCount = CouponCount + 1 WHERE PhoneNumber = @phoneNumber;
-END IF;
-
-SELECT CouponCount FROM UserCoupons WHERE PhoneNumber = @phoneNumber;
-
-SELECT PhoneNumber, CouponCount FROM UserCoupons;
-
+-- 만약 phoneNumber가 이미 존재한다면, couponCount를 증가시킵니다.
+-- 만약 phoneNumber가 존재하지 않는다면 새 레코드를 삽입합니다.
+INSERT INTO coupon (phoneNumber, couponCount)
+VALUES (@phoneNumber, 1)
+ON DUPLICATE KEY UPDATE couponCount = couponCount + 1, phoneNumber = phoneNumber;

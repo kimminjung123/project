@@ -9,11 +9,23 @@ import java.util.List;
 
 public class MenuService {
     MenuRepository menuRepository = new MenuRepository();
-    public void create(int menuId, String menuName, int menuPrice, int ice, int syrup) {
-        this.menuRepository.create(menuId, menuName, menuPrice, ice, syrup);
+    public int create(String menuName, int menuPrice, int ice, int syrup) {
+        return this.menuRepository.create(menuName, menuPrice, ice, syrup);
+    }
+
+    public int modify(Menu menu) {
+        return this.menuRepository.modify(menu);
     }
 
     public List<Menu> getMenuListAll() {
         return this.menuRepository.getMenuListAll();
+    }
+
+    public Menu getMenuFindById(int id) {
+        return this.menuRepository.getMenuFindById(id);
+    }
+
+    public int remove(Menu menu) {
+        return this.menuRepository.remove(menu);
     }
 }

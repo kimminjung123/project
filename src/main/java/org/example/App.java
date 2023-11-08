@@ -7,7 +7,7 @@ import org.example.menu.controller.MenuController;
 
 public class App {
     public App () {
-        DBConnection.DB_NAME = "proj1";
+        DBConnection.DB_NAME = "kiosk_db";
         DBConnection.DB_USER = "root";
         DBConnection.DB_PASSWORD = "";
         DBConnection.DB_PORT = 3306;
@@ -53,13 +53,9 @@ public class App {
                 case 5:
                     couponController.coupon();
                     break;
-
                 case 6:
                     menuController.payment();
                     return;
-
-
-
                 case 7:
                     systemController.exit();
                     return;
