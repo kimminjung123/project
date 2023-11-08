@@ -14,7 +14,8 @@
 - 협업 툴 : GitHub
 
 ## 🛠 ERD 설계
-[ERD 설계]
+![ERD 설계](https://github.com/kimminjung123/project/assets/133175842/5d3e0a06-70b6-4e46-bb3c-cf9be6068358)
+
 
 ## 📁 시연
 
