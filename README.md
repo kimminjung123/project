@@ -1,4 +1,4 @@
-<img width="704" alt="image" src="https://github.com/kimminjung123/project/assets/133175842/5188b2f0-2d21-4b16-b67e-7c695ce742c1"># ☕ 카페 키오스크 시스템 만들기
+# ☕ 카페 키오스크 시스템 만들기
 ### 2023.11월 초급 프로젝트
 
 ## 📢 프로젝트 소개
@@ -14,7 +14,7 @@
 - 협업 툴 : GitHub
 
 ## 🛠 ERD 설계
-[ERD 설계](https://www.erdcloud.com/d/ELa5SQ4hBuzgF7ZRp)
+<img width="704" alt="image" src="https://github.com/kimminjung123/project/assets/133175842/5188b2f0-2d21-4b16-b67e-7c695ce742c1">
 
 ## 📁 시연
 [코드 시연](https://youtu.be/p_bQK4SRE2s)
