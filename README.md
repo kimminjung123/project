@@ -14,7 +14,7 @@
 - 협업 툴 : GitHub
 
 ## 🛠 ERD 설계
-<img width="704" alt="image" src="https://github.com/kimminjung123/project/assets/133175842/5188b2f0-2d21-4b16-b67e-7c695ce742c1">
+<img width="766" alt="image" src="https://github.com/kimminjung123/project/assets/133175842/5b7cf201-b03a-4df9-9b00-a7a66fceb845">
 
 ## 📁 시연
 [코드 시연](https://youtu.be/p_bQK4SRE2s)
